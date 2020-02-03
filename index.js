@@ -6,7 +6,10 @@ var success = () => process.exit(0)
 
 var eventHandlers = createObjectWithDefaultValue({}, function () {
 	throw new Error(
-		"The Origami project board action should only be run on `pull_request` or `issue`. See https://github.com/Financial-Times/origami-project-board-action#usage"
+		`
+The Origami project board action should only be run on \`pull_request\` or
+\`issues\`, \`${github.context.payload.action}\`.
+See https://github.com/Financial-Times/origami-project-board-action#usage`
 	)
 })
 
@@ -44,7 +47,7 @@ eventHandlers.pull_request = async function pullRequest (octo, {incomingColumnId
 		.catch(handleCreateCardResponse)
 }
 
-eventHandlers.issue = async function issue (octo, {incomingColumnId}) {
+eventHandlers.issues = async function issues (octo, {incomingColumnId}) {
 	if (github.context.payload.action != "opened") {
 		core.info("it's an issue, but it hasn't just opened so i'll ignore it:)")
 		return
