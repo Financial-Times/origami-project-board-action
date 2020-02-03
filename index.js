@@ -43,7 +43,7 @@ eventHandlers.pull_request = async function pullRequest (octo, {incomingColumnId
 
 	core.info("creating card for pr ${id}")
 
-	octo.projects.createCard({
+	return octo.projects.createCard({
 		column_id: incomingColumnId,
 		content_id: id,
 		content_type: contentTypes.pr
@@ -68,7 +68,7 @@ eventHandlers.issues = async function issues (octo, {incomingColumnId}) {
 
 	core.info("creating card for issue ${id}")
 
-	octo.projects.createCard({
+	return octo.projects.createCard({
 		column_id: incomingColumnId,
 		content_id: id,
 		content_type: contentTypes.issue
