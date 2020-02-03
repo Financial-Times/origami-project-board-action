@@ -41,7 +41,7 @@ eventHandlers.pull_request = async function pullRequest (octo, {incomingColumnId
 
 	var id = github.context.payload.pull_request.id
 
-	core.info("creating card for pr ${id}")
+	core.info(`creating card for pr ${id}`)
 
 	return octo.projects.createCard({
 		column_id: incomingColumnId,
