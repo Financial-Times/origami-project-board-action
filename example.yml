@@ -1,13 +1,14 @@
+name: Add new issues and pull requests to Origami Project Board
 on: [issues, pull_request]
 
 jobs:
   origami_project_board_job:
     runs-on: ubuntu-latest
-    name: Add new issue/pr to Origami Project Board
+    name: Add new issue or pull request to Origami Project Board
     steps:
-    - name: Add new issue/pr to Origami Project Board
+    - name: Add new issue or pull request to Origami Project Board
       id: origami-project-board
-      uses: Financial-Times/origami-project-board-action
+      uses: Financial-Times/origami-project-board-action@v1
       with:
         incoming-column-id: 7751116
         origami-fox-access-token: ${{ secrets.ORIGAMI_FOX_ACCESS_TOKEN }}

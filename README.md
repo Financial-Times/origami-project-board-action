@@ -14,5 +14,5 @@ See [./example.yml](./example.yml)
 
 ### 2. Adding the workflow
 1. In your project, make the directory `.github/workflows/` if it does not exist
-2. Add [this file](./example.yml) to the `.github/workflows/` directory
+2. Add [this file](./example.yml) to the `.github/workflows/` directory as `add-new-issues-and-pull-requests-to-origami-project-board.yml`
 3. Branch, commit, push, pr, enjoy
