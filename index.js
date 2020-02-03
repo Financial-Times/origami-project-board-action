@@ -25,7 +25,7 @@ function handleCreateCardResponse (response) {
 	}
 
 	if (response.status == 422) {
-		core.warn("That item is already on the board!")
+		core.warning("That item is already on the board!")
 		return
 	}
 
