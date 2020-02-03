@@ -1,0 +1,13 @@
+name: 'Origami Project Board'
+description: 'Add new issues and pull requests to Origami Project Board'
+inputs:
+  incoming-column-id:
+    description: 'The ID of the column new issues/pull requests should be added to'
+    required: true
+    default: 7751116
+  origami-fox-access-token:
+    description: 'An access token with permission to add things to the board'
+    required: true
+runs:
+  using: node12
+  main: index.js
