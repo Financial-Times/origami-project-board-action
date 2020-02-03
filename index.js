@@ -8,7 +8,7 @@ var eventHandlers = createObjectWithDefaultValue({}, function () {
 	throw new Error(
 		`
 The Origami project board action should only be run on \`pull_request\` or
-\`issues\`, \`${github.context.payload.action}\`.
+\`issues\`, \`${github.context.eventName}\`.
 See https://github.com/Financial-Times/origami-project-board-action#usage`
 	)
 })
@@ -33,8 +33,9 @@ function handleCreateCardResponse (response) {
 }
 
 eventHandlers.pull_request = async function pullRequest (octo, {incomingColumnId}) {
-	if (github.context.payload.action != "opened") {
-		core.info("it's a pull request, but it hasn't just opened so i'll ignore it:)")
+	var action = github.context.payload.action
+	if (action != "opened") {
+		core.info(`it's a pull request, but i only care about "opened", not "${action}", so i'll ignore it:)`)
 		return
 	}
 
@@ -48,8 +49,9 @@ eventHandlers.pull_request = async function pullRequest (octo, {incomingColumnId
 }
 
 eventHandlers.issues = async function issues (octo, {incomingColumnId}) {
-	if (github.context.payload.action != "opened") {
-		core.info("it's an issue, but it hasn't just opened so i'll ignore it:)")
+	var action = github.context.payload.action
+	if (action != "opened") {
+		core.info(`it's an issue, but i only care about "opened", not "${action}", so i'll ignore it:)`)
 		return
 	}
 
