@@ -39,7 +39,9 @@ eventHandlers.pull_request = async function pullRequest (octo, {incomingColumnId
 		column_id: incomingColumnId,
 		content_id: github.context.payload.pull_request.id,
 		content_type: contentTypes.pr
-	}).then(handleCreateCardResponse)
+	})
+		.then(handleCreateCardResponse)
+		.catch(handleCreateCardResponse)
 }
 
 eventHandlers.issue = async function issue (octo, {incomingColumnId}) {
@@ -57,7 +59,9 @@ eventHandlers.issue = async function issue (octo, {incomingColumnId}) {
 		column_id: incomingColumnId,
 		content_id: github.context.payload.issue.id,
 		content_type: contentTypes.issue
-	}).then(handleCreateCardResponse)
+	})
+		.then(handleCreateCardResponse)
+		.catch(handleCreateCardResponse)
 }
 
 void async function () {
