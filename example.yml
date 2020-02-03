@@ -10,5 +10,4 @@ jobs:
       id: origami-project-board
       uses: Financial-Times/origami-project-board-action@v1
       with:
-        incoming-column-id: 7751116
         origami-fox-access-token: ${{ secrets.ORIGAMI_FOX_ACCESS_TOKEN }}
