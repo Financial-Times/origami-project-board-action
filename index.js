@@ -39,9 +39,13 @@ eventHandlers.pull_request = async function pullRequest (octo, {incomingColumnId
 		return
 	}
 
+	var id = github.context.payload.pull_request.id
+
+	core.info("creating card for pr ${id}")
+
 	octo.projects.createCard({
 		column_id: incomingColumnId,
-		content_id: github.context.payload.pull_request.id,
+		content_id: id,
 		content_type: contentTypes.pr
 	})
 		.then(handleCreateCardResponse)
@@ -60,9 +64,13 @@ eventHandlers.issues = async function issues (octo, {incomingColumnId}) {
 		return
 	}
 
+	var id = github.context.payload.issue.id
+
+	core.info("creating card for issue ${id}")
+
 	octo.projects.createCard({
 		column_id: incomingColumnId,
-		content_id: github.context.payload.issue.id,
+		content_id: id,
 		content_type: contentTypes.issue
 	})
 		.then(handleCreateCardResponse)
