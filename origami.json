@@ -1,0 +1,18 @@
+{
+	"description": "A GitHub action for updating Origami's project board with new issues and PRs",
+	"origamiType": null,
+	"origamiVersion": 1,
+	"keywords": [
+		"GitHub",
+		"action",
+		"project",
+		"issues",
+		"prs"
+	],
+	"support": "https://github.com/Financial-Times/origami-project-board-action/issues",
+	"supportStatus": "active",
+	"supportContact": {
+		"email": "origami.support@ft.com",
+		"slack": "financialtimes/origami-support"
+	}
+}
