@@ -12,6 +12,8 @@
   "dependencies": {
     "@actions/core": "^1.2.2",
     "@actions/github": "^2.1.0",
-    "object-with-default-value": "^1.1.0"
+    "@octokit/rest": "^17.1.2",
+    "object-with-default-value": "^1.1.0",
+    "tweetsodium": "0.0.4"
   }
 }
