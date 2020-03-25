@@ -7,10 +7,25 @@ Automatically add all new issues and pull requests to the Origami Project Board!
 See [./example.yml](./example.yml)
 
 ### 1. Adding the secret
-1. Get the secret from LastPass. It's in a Shared-Origami note called `Origami fox issue and pull request workflow secret`.
+
+#### Manual approach:
+
+1. Get the secret from [Vault](https://vault.in.ft.com:8080/ui/vault/secrets/secret/show/teams/origami/github.com/origamiserviceuser). It is named `ORIGAMI_FOX_ACCESS_TOKEN`.
 2. Browse to the repository's `settings/secrets` page. For example, `o-colors` secret page is: https://github.com/Financial-Times/o-colors/settings/secrets
 3. If there is already a key called `ORIGAMI_FOX_ACCESS_TOKEN`, remove it. (If not, that's good)
 4. Add a new key called `ORIGAMI_FOX_ACCESS_TOKEN` with the value you got from LastPass
+
+#### Automated approach:
+
+1. Get the secret from [Vault](https://vault.in.ft.com:8080/ui/vault/secrets/secret/show/teams/origami/github.com/origamiserviceuser). It is named `ORIGAMI_FOX_ACCESS_TOKEN`.
+2. Get a [GitHub token](https://github.com/settings/tokens/new) with write access for the repositories you want to add the secret to.
+3. Clone this repository and run this shell command below, replace example with the name of the repository you want to add the secret to:
+
+```sh
+git clone git@github.com:Financial-Times/origami-project-board-action.git
+cd origami-project-board-action
+GITHUB_TOKEN="<GITHUB_TOKEN>" SECRET_NAME="ORIGAMI_FOX_ACCESS_TOKEN" SECRET_VALUE="example secret value" OWNER="Financial-Times" REPO="example" node ./add-secret-to-repo.js
+```
 
 ### 2. Adding the workflow
 1. In your project, make the directory `.github/workflows/` if it does not exist
