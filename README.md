@@ -13,7 +13,7 @@ See [./example.yml](./example.yml)
 1. Get the secret from [Vault](https://vault.in.ft.com:8080/ui/vault/secrets/secret/show/teams/origami/github.com/origamiserviceuser). It is named `ORIGAMI_FOX_ACCESS_TOKEN`.
 2. Browse to the repository's `settings/secrets` page. For example, `o-colors` secret page is: https://github.com/Financial-Times/o-colors/settings/secrets
 3. If there is already a key called `ORIGAMI_FOX_ACCESS_TOKEN`, remove it. (If not, that's good)
-4. Add a new key called `ORIGAMI_FOX_ACCESS_TOKEN` with the value you got from LastPass
+4. Add a new key called `ORIGAMI_FOX_ACCESS_TOKEN` with the value you got from Vault
 
 #### Automated approach:
 
