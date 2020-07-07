@@ -106,7 +106,9 @@ eventHandlers.issues = async function issues (octo, {incomingColumnId}) {
 
 void async function () {
 	try {
-		var origamiFoxAccessToken = core.getInput("origami-fox-access-token")
+		var origamiFoxAccessToken = core.getInput("origami-fox-access-token", {
+			required: true
+		})
 		var incomingColumnId = core.getInput("incoming-column-id")
 		var octo = new github.GitHub(origamiFoxAccessToken, {
 			previews: ["inertia-preview"]
