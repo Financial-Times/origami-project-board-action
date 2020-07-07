@@ -48,7 +48,7 @@ eventHandlers.push = async function push (octo, {incomingColumnId}) {
 
 	var id = pr && pr.number
 
-	core.info(`creating card for pr ${id}, ${JSON.stringify(pr)}`)
+	core.info(`creating card for pr ${id}, ${JSON.stringify(result.data)}`)
 
 	return octo.projects.createCard({
 		column_id: incomingColumnId,
