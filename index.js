@@ -7,8 +7,8 @@ var success = () => process.exit(0)
 var eventHandlers = createObjectWithDefaultValue({}, function () {
 	throw new Error(
 		`
-The Origami project board action should only be run on \`pull_request\` or
-\`issues\`, \`${github.context.eventName}\`.
+The Origami project board action should only be run on \`pull_request\`, \`push\` or
+\`issues\`, but was run on \`${github.context.eventName}\`.
 See https://github.com/Financial-Times/origami-project-board-action#usage`
 	)
 })
@@ -30,6 +30,33 @@ function handleCreateCardResponse (response) {
 	}
 
 	throw new Error(JSON.stringify(response))
+}
+
+eventHandlers.push = async function push (octo, {incomingColumnId}) {
+	if (github.context.payload.pull_request) {
+		core.info("it's an push, but it's also a PR i'll let the PR action handle it:)")
+		return
+	}
+
+    var result = await octo.repos.listPullRequestsAssociatedWithCommit({
+        owner: github.context.repo.owner,
+        repo: github.context.repo.repo,
+        commit_sha: github.context.sha,
+    })
+
+    var pr = result.data.find(el => el.state === 'open')
+
+	var id = pr && pr.number
+
+	core.info(`creating card for pr ${id}`)
+
+	return octo.projects.createCard({
+		column_id: incomingColumnId,
+		content_id: id,
+		content_type: contentTypes.pr
+	})
+		.then(handleCreateCardResponse)
+		.catch(handleCreateCardResponse)
 }
 
 eventHandlers.pull_request = async function pullRequest (octo, {incomingColumnId}) {
