@@ -7,9 +7,9 @@ var success = () => process.exit(0)
 var eventHandlers = createObjectWithDefaultValue({}, function () {
 	throw new Error(
 		`
-The Origami project board action should only be run on \`pull_request\` or
-\`issues\`, \`${github.context.eventName}\`.
-See https://github.com/Financial-Times/origami-project-board-action#usage`
+The Origami project board action only works on \`pull_request\` or
+\`issues\` events, not for i\`${github.context.eventName}\`.
+Please see https://github.com/Financial-Times/origami-project-board-action#usage for information on how to set up the workflow correctly`
 	)
 })
 
