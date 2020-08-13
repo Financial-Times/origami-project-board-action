@@ -3,7 +3,7 @@ on:
   issues:
   pull_request:
   push:
-    branches-ignore: master
+    branches-ignore: $default-branch
 
 jobs:
   origami_project_board_job:
