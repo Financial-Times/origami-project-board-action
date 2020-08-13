@@ -34,8 +34,8 @@ function handleCreateCardResponse (response) {
 
 eventHandlers.pull_request = async function pullRequest (octo, {incomingColumnId}) {
 	var action = github.context.payload.action
-	if (action != "synchronize") {
-		core.info(`it's a pull request, but i only care about "synchronize", not "${action}", so i'll ignore it:)`)
+	if (action != "opened") {
+		core.info(`it's a pull request, but i only care about "opened", not "${action}", so i'll ignore it:)`)
 		return
 	}
 
